@@ -20,7 +20,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: docker build -t my-portfolio subhamsharma2/my-web .
+        run: docker build -t subhamsharma2/my-web .
 
       - name: Push Docker image to Docker Hub
         run: docker push subhamsharma2/my-web
