@@ -25,3 +25,14 @@ jobs:
 
       - name: Push Docker image to Docker Hub
         run: docker push subhamsharma2/my-web
+
+   deploy:
+     runs-on: self-hosted 
+     needs: build-and-push-docker
+     steps:
+       - name: pulling docker image
+         run: docker pull ${{ secrets.DOCKER_USERNAME }}/my-web
+       - name: Runnin docker image on self hosted runner
+         run: docker run -d --name my-web1 -p:8080:80 ${{ secrets.DOCKER_USERNAME }}/my-web
+    
+   
