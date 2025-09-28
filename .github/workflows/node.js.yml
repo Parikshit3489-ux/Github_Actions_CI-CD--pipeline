@@ -21,10 +21,10 @@ jobs:
 
       - name: Build Docker image
         working-directory: ./project/public
-        run: docker build -t subhamsharma2/my-web .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/my-web .
 
       - name: Push Docker image to Docker Hub
-        run: docker push subhamsharma2/my-web
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/my-web
 
    deploy:
      runs-on: self-hosted 
